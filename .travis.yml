@@ -1,6 +1,8 @@
 language: java
-dist: bionic
-
+dist: trusty
+services:
+  - xvfb
+  
 addons:
   chrome: stable
   firefox: stable
@@ -24,7 +26,7 @@ before_script:
   # include ChromeDriver in PATH
   - ln --symbolic /usr/lib/chromium-browser/chromedriver "${HOME}/bin/chromedriver"
   # start Chrome and listen on localhost
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  #- google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   # include GeckoDriver in PATH
   - wget --quiet https://github.com/mozilla/geckodriver/releases/download/${GECKODRIVER_VERSION}/geckodriver-${GECKODRIVER_VERSION}-linux64.tar.gz
   - echo ${GECKODRIVER_HASH} "geckodriver-${GECKODRIVER_VERSION}-linux64.tar.gz" | md5sum --check -
