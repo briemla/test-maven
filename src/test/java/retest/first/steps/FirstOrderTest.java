@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import de.retest.web.selenium.RecheckDriver;
 
@@ -14,7 +15,9 @@ public class FirstOrderTest {
 
 	@Before
 	public void setup() {
-		driver = new RecheckDriver(new ChromeDriver());
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--headless");
+		driver = new RecheckDriver(new ChromeDriver(chromeOptions));
 	}
 
 	@Test
@@ -30,7 +33,7 @@ public class FirstOrderTest {
 
 		driver.capTest();
 	}
-	
+
 	@After
 	public void tearDown() {
 		driver.quit();
